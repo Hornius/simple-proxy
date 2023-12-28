@@ -18,7 +18,7 @@ jobs:
       
       - name: Setup Git
         run: |
-          git config user.name "GitHub Action"
+          git config user.name "Hornius"
           git config user.email "legendary.2050@gmail.com"
 
       - name: Add Upstream Repository
