@@ -1,0 +1,26 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Scheduled to run every 30 minutes. Adjust as needed.
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Git
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "legendary.2050@gmail.com"
+
+      - name: Sync Fork
+        run: |
+          git fetch upstream
+          git checkout dev # Replace with your default branch if it's not 'main'
+          git merge upstream/dev # Replace with your default branch if it's not 'main'
+          git push
